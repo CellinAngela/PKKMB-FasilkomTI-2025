@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Sederhana</title>
+    <link rel="stylesheet" href="simplecalc.css">
+</head>
+
+<body>
+    <div class="container">
+        <h3>Kalkulator</h3>
+        <input type="number" id="bil1" placeholder="Input Bilangan 1">
+        <input type="number" id="bil2" placeholder="Input Bilangan 2">
+
+        <div class="buttons">
+            <button onclick="hitung('+')">+</button>
+            <button onclick="hitung('-')">-</button>
+            <button onclick="hitung('*')">*</button>
+            <button onclick="hitung('/')">/</button>
+        </div>
+
+        <input type="text" id="hasil" placeholder="Output Operasi" readonly>
+    </div>
+
+    <script>
+        function hitung(operator) {
+            let bil1 = parseFloat(document.getElementById("bil1").value);
+            let bil2 = parseFloat(document.getElementById("bil2").value);
+            let hasil = "";
+
+            if (isNaN(bil1) || isNaN(bil2)) {
+                hasil = "Input tidak valid";
+            } else {
+                switch (operator) {
+                    case '+': hasil = bil1 + bil2; break;
+                    case '-': hasil = bil1 - bil2; break;
+                    case '*': hasil = bil1 * bil2; break;
+                    case '/':
+                        hasil = bil2 !== 0 ? bil1 / bil2 : "Error";
+                        break;
+                }
+            }
+
+            document.getElementById("hasil").value = hasil;
+        }
+    </script>
+</body>
+
+</html>
